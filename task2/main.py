@@ -21,11 +21,6 @@ def files_by_line_length(file_names):
         count_line_dict[line_in_file] = file_name
     count_line_dict = dict(sorted(count_line_dict.items()))
 
-    # count_line_list = []
-    #
-    # for value in count_line_dict.values():
-    #     count_line_list.append(value)
-
     return count_line_dict
 
 
@@ -37,8 +32,6 @@ def main():
         if file_name.endswith('.txt'):
             relative_path = os.path.join(folder, file_name)
             txt_files.append((relative_path, file_name))
-            # with open(os.path.join(folder, file_name), 'rt', encoding='UTF-8') as file:
-            #     print(file.read())
 
     count_line_dict = files_by_line_length(txt_files)
 
@@ -50,7 +43,8 @@ def main():
 
     for key, value in count_line_dict.items():
         count_of_files += 1
-        with open('result_file.txt', 'at', encoding='UTF-8') as file_output, open(value[0], 'rt', encoding='UTF-8') as file_input:
+        with open('result_file.txt', 'at', encoding='UTF-8') as file_output, open(value[0], 'rt',
+                                                                                  encoding='UTF-8') as file_input:
             file_output.write(value[1] + '\n')
             file_output.write(str(key) + '\n')
             number_line = 0
@@ -59,12 +53,9 @@ def main():
                 res_string = f'Строка номер {number_line} файла номер {count_of_files}'
                 file_output.write(res_string + '\n')
                 file_output.write(line)
-            #file_output.write(value[1])
+            # file_output.write(value[1])
             file_output.write('\n')
 
 
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     main()
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
